@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+  float results [4][4];
+  int i=0;
+  int j=0;
+  for (float x=0; x<=1; x=x+0.4) {
+    for (float y=1; y<=2; y=y+0.3) {
+      if (x*y<=-1){
+        float u= fmax(exp(2)*sqrt(log(x*x*x*x+2)), x*acos(x/y ));
+        results[i][j]=u;
+                  }
+      else if (x*y<2 && x*y>-1){
+        float u=0;
+        results[i][j]=u;
+                              }
+      else {
+        float u=fmin(sqrt(fabs(x*x-y)), cos(x*cbrt(y-1)) );
+        results[i][j]=u;
+          }
+      j++;
+
+                                }
+    i++;
+                            }
+  for (int i=0; i<=3; i++ ) {
+    for(int j=0; j<=4; j++) {
+      printf("%f  ", results[i][j]);
+                            }
+                            }
+  return 0;
+}
