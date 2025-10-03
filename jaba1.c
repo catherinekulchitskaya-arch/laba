@@ -24,8 +24,7 @@ int main() {
                    U = fmin(niz1, niz2);
                    printf(" %.2f | %.2f | %.12f\n", x, y, U);
             }
-            //printf(" %.2f | %.2f | %.12f\n", x, y, U);
-
+         
         }
     }
 
