@@ -73,6 +73,7 @@ int main() {
 
         int ch[100];
         int dlina = 0;
+        int found = 0;
         chain(N, M, ch, dlina, 0);
 
         if(dlina > 0) {
