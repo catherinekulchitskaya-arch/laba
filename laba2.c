@@ -42,9 +42,9 @@ int main () {
                 M = temp;
         }
 
-
+        printf("  [%d, %d]\n", N, M);
         izbit_chain (N, M);
-        printf(" \n", N, M);
+        printf(" \n");
         return 0;
 }
 
