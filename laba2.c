@@ -11,7 +11,7 @@ int sumDivisors(int n, int i) {
 
 
 int isAbundant(int n) {
-    int sum = sumDivisors(n, n / 2);
+    int sum = sumDivisors(n, n / 2); 
     return sum > n;
 }
 
@@ -20,7 +20,7 @@ void printAbundantInRange(int n, int m) {
     if (n > m) return; 
     if (isAbundant(n))
         printf("%d ", n);
-    printAbundantInRange(n + 1, m);
+    printAbundantInRange(n + 1, m); 
 }
 
 int main() {
@@ -29,13 +29,13 @@ int main() {
     printf("Введите два натуральных числа (N и M): ");
     scanf("%d %d", &N, &M);
 
-    
+
     if (N <= 0 || M <= 0) {
         printf("Ошибка: числа должны быть натуральными.\n");
         return 1;
     }
 
-
+    
     if (N > M) {
         int temp = N;
         N = M;
