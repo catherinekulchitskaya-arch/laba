@@ -1,50 +1,46 @@
 #include <stdio.h>
 
-int deliteli( int n, int i) {
-        if ( i == 0  ) {
-                return 0;
-        }
-        if ( n % i == 0) {
-                return i + deliteli( n, i-1);
-        }
-        else {
-                return deliteli(n, i-1);
-        }
- }
-
-int izbit(int n) {
-        int sum = deliteli(n, n /2);
-        return sum > n;
+int deliteli(int n, int i) {
+    if (i == 0) return 0;
+    if (n % i == 0)
+        return i + deliteli(n, i - 1);
+    else
+        return deliteli(n, i - 1);
 }
 
-void  izbit_chain(int n, int m) {
-        if (n > m) {
-                return;
-        }
-        if (izbit(n)) {
-                printf("%d ", n);
-        izbit_chain(n + 1, m ); 
-        }
+
+int abundant(int n) {
+    int sum = deliteli(n, n / 2); 
+    return sum > n;
 }
-int main () {
-        int N, M;
 
-        printf("Vvedite N & M: ");
-        if (scanf("%d %d ", &N, &M) != 2 || N <=0 || M<=0) {
-                printf ("Oshibka\n");
-                return 1;
 
-        }
+void abundant_chain(int n, int m) {
+    if (n > m) return; 
+    if (abundant(n))
+        printf("%d ", n);
+    abundant_chain(n + 1, m); 
 
-        if (N > M) {
-                int temp = N;
-                N = M;
-                M = temp;
-        }
+int main() {
+    int N, M;
 
-        printf("  [%d, %d]\n", N, M);
-        izbit_chain (N, M);
-        printf(" \n");
-        return 0;
-}
+    printf("Введите два натуральных числа (N и M): ");
+    scanf("%d %d", &N, &M);
+
+    if (N <= 0 || M <= 0) {
+        printf("Ошибка: числа должны быть натуральными.\n");
+        return 1;
+    }
+
+    if (N > M) {
+        int temp = N;
+        N = M;
+        M = temp;
+    }
+
+    printf("Избыточные числа в диапазоне [%d, %d]: ", N, M);
+    abundant_chain(N, M);
+    printf("\n");
+
+    return 0;
 
