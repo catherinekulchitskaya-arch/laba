@@ -15,11 +15,11 @@ int abundant(int n) {
 }
 
 
-void abundant_chain(int n, int m) {
+void abundantchain(int n, int m) {
     if (n > m) return; 
     if (abundant(n))
         printf("%d ", n);
-    abundant_chain(n + 1, m); 
+    abundantchain(n + 1, m); 
 
 int main() {
     int N, M;
@@ -39,7 +39,7 @@ int main() {
     }
 
     printf("Избыточные числа в диапазоне [%d, %d]: ", N, M);
-    abundant_chain(N, M);
+    abundantchain(N, M);
     printf("\n");
 
     return 0;
