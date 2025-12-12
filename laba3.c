@@ -21,8 +21,23 @@ int main(int argc, char **argv)
     fscanf(f, "%d %d", &N, &M);
 
     double **a = malloc(N * sizeof(double *));
-    for (int i = 0; i < N; i++)
+    if (!a){
+        printf("FFFFFF\n");
+        fclose(f);
+        return 1;
+    }
+    for (int i = 0; i < N; i++) {
         a[i] = malloc(M * sizeof(double));
+        if (!a){
+            printf("FFFFFF\n", i);
+            for (int k= 0; k < i;k++)
+                free(a[k]);
+            free(a);
+            
+            fclose(f);
+            return 1;
+        }
+    }
 
     for (int i = 0; i < N; i++)
         for (int j = 0; j < M; j++)
@@ -30,7 +45,7 @@ int main(int argc, char **argv)
 
     fclose(f);
 
-   
+    }
     double maxEven = a[0][1];
 
     for (int j = 1; j < M; j += 2)     
@@ -41,6 +56,9 @@ int main(int argc, char **argv)
     if (M < 4)
     {
         printf("Матрица меньше 4 столбцов!\n");
+         for (int i= 0; i < N;i++)
+                free(a[i]);
+            free(a);
         return 1;
     }
 
